@@ -1,0 +1,41 @@
+@if(assignment) {
+<div class="container">
+  <mat-card class="edit-assignment-card">
+    <mat-card-header>
+      <div mat-card-avatar class="header-image">
+        <mat-icon>edit</mat-icon>
+      </div>
+      <mat-card-title>Modification de l'assignment</mat-card-title>
+      <mat-card-subtitle>Entrez les nouvelles valeurs</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-content>
+      <form ngForm #formupdate class="assignment-form" (submit)="onSaveAssignment(); formupdate.reset(); ">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nom de l'assignment</mat-label>
+          <input matInput placeholder="Ex: Angular Project" [(ngModel)]="nomAssignment" name="assignment-name" required>
+          <mat-icon matSuffix>edit</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Date de rendu</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="Choisissez une date" [(ngModel)]="dateDeRendu"
+            name="date" required>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-hint>MM/DD/YYYY</mat-hint>
+        </mat-form-field>
+
+        <div class="form-actions">
+          <button mat-flat-button color="primary" [disabled]="!nomAssignment || !dateDeRendu" class="submit-button">
+            <mat-icon>save</mat-icon>
+            Sauver
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+}

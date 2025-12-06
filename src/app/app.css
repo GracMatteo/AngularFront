@@ -1,0 +1,32 @@
+.right {
+    margin-left: auto;
+}
+
+.middle {
+    margin: auto;
+}
+
+.left {
+    margin-right: auto;
+}
+
+
+
+mat-sidenav-container {
+    height: calc(100vh - 64px);
+    width: auto;
+}
+
+
+mat-sidenav {
+    width: 200px;
+    box-shadow: 1px 5px 5px black;
+}
+
+mat-sidenav button {
+    width: 100%;
+}
+
+mat-sidenav button span {
+    text-align: left;
+}

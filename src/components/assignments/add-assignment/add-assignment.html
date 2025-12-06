@@ -1,0 +1,41 @@
+<div class="add-assignment-container">
+    <mat-card class="add-assignment-card">
+        <mat-card-header>
+            <div mat-card-avatar class="header-image">
+                <mat-icon>add_task</mat-icon>
+            </div>
+            <mat-card-title>New Assignment</mat-card-title>
+            <mat-card-subtitle>Create a new assignment entry</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-divider></mat-divider>
+
+        <mat-card-content>
+            <form ngForm class="assignment-form" (submit)="onAdd($event);" #assignmentForm>
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Assignment Name</mat-label>
+                    <input matInput placeholder="Ex: Angular Project" name="nomAssignment" [(ngModel)]="nomAssignment"
+                        required>
+                    <mat-icon matSuffix>edit</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Due Date</mat-label>
+                    <input matInput [matDatepicker]="picker" name="dateDeRendu" [(ngModel)]="dateDeRendu" required
+                        placeholder="Choose a date">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                </mat-form-field>
+
+                <div class="form-actions">
+                    <button mat-flat-button color="primary" [disabled]="!nomAssignment || !dateDeRendu"
+                        class="submit-button">
+                        <mat-icon>add</mat-icon>
+                        Add Assignment
+                    </button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

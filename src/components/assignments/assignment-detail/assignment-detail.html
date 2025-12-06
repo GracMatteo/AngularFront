@@ -1,0 +1,52 @@
+<div class="assignment-detail-container">
+    @if(assignment) {
+    <mat-card class="assignment-card">
+        <mat-card-header>
+            <div mat-card-avatar class="assignment-header-image">
+                <mat-icon>assignment</mat-icon>
+            </div>
+            <mat-card-title>{{assignment.nom}}</mat-card-title>
+            <mat-card-subtitle>Assignment Details</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <div class="assignment-info">
+                <div class="info-item">
+                    <mat-icon color="primary">calendar_today</mat-icon>
+                    <span class="label">Due Date:</span>
+                    <span class="value">{{assignment.dateDeRendu | date:'fullDate'}}</span>
+                </div>
+
+                <div class="info-item">
+                    <mat-icon [color]="assignment.rendu ? 'accent' : 'warn'">
+                        {{assignment.rendu ? 'check_circle' : 'pending'}}
+                    </mat-icon>
+                    <span class="label">Status:</span>
+                    <span class="status-badge" [class.rendu]="assignment.rendu" [class.non-rendu]="!assignment.rendu">
+                        {{assignment.rendu ? 'Submitted' : 'Pending'}}
+                    </span>
+                </div>
+            </div>
+        </mat-card-content>
+
+        <mat-divider></mat-divider>
+
+        <mat-card-actions align="end">
+            <div class="action-buttons">
+                <mat-checkbox (click)="onAssignmentRendu()" [checked]="assignment.rendu" color="primary">
+                    Mark as Submitted
+                </mat-checkbox>
+
+                <span class="spacer"></span>
+
+                <button mat-button color="warn" (click)="onDeleteAssignment()" [disabled]="!isLogged()">
+                    <mat-icon>delete</mat-icon> Delete
+                </button>
+                <button mat-flat-button color="primary" (click)="onClickEdit()" [disabled]="!isLogged()">
+                    <mat-icon>edit</mat-icon> Edit
+                </button>
+            </div>
+        </mat-card-actions>
+    </mat-card>
+    }
+</div>

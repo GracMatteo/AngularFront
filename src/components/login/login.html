@@ -1,0 +1,35 @@
+<div class="login-container">
+    <mat-card class="login-card">
+        <mat-card-header>
+            <div mat-card-avatar class="login-header-image">
+                <mat-icon>lock</mat-icon>
+            </div>
+            <mat-card-title>Welcome Back</mat-card-title>
+            <mat-card-subtitle>Please sign in to continue</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <form (ngSubmit)="onLogin()" #loginForm="ngForm" class="login-form">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Username</mat-label>
+                    <input matInput [(ngModel)]="username" name="username" required placeholder="Enter your username">
+                    <mat-icon matSuffix>person</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Password</mat-label>
+                    <input matInput [(ngModel)]="password" name="password" type="password" required
+                        placeholder="Enter your password">
+                    <mat-icon matSuffix>lock</mat-icon>
+                </mat-form-field>
+
+                <div class="form-actions">
+                    <button mat-flat-button color="primary" type="submit" [disabled]="!loginForm.form.valid"
+                        class="login-button">
+                        Login
+                    </button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
